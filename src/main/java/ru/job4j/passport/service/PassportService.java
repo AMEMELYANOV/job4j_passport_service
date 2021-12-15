@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.job4j.passport.domain.Passport;
 import ru.job4j.passport.repository.PassportRepository;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -52,15 +53,12 @@ public class PassportService {
     }
 
     public List<Passport> findUnavailable() {
-        Calendar date = Calendar.getInstance();
+        LocalDate date = LocalDate.now();
         return passportRepository.findAllByExpiredDateBefore(date);
 
     }
 
     public List<Passport> findReplaceable() {
-        Calendar startDate = Calendar.getInstance();
-        Calendar endDate = Calendar.getInstance();
-        endDate.add(Calendar.MONTH, 3);
-        return passportRepository.findAllByExpiredDateBetween(startDate, endDate);
+        return passportRepository.findPassportByExpiredDate(LocalDate.now());
     }
 }
