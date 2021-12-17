@@ -1,4 +1,4 @@
-package ru.job4j.passport.client.service;
+package ru.job4j.restservice.service;
 
 import ru.job4j.passport.domain.Passport;
 import java.util.List;
@@ -14,7 +14,7 @@ public interface PassportProvider {
 
     List<Passport> findBySeries(String seria);
 
-    List<Passport> findUnavaliabe();
+    List<Passport> findUnavailable();
 
     List<Passport> findReplaceable();
 }

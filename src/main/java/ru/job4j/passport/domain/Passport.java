@@ -1,14 +1,10 @@
 package ru.job4j.passport.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
 @Entity
 @Table(name = "passports")
 public class Passport {

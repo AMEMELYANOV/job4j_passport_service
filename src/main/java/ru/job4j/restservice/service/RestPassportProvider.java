@@ -1,4 +1,4 @@
-package ru.job4j.passport.client.service;
+package ru.job4j.restservice.service;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -51,7 +51,7 @@ public class RestPassportProvider implements PassportProvider {
     }
 
     @Override
-    public List<Passport> findUnavaliabe() {
+    public List<Passport> findUnavailable() {
         return client.exchange(
                 url + "/unavailable",
                 HttpMethod.GET, null, new ParameterizedTypeReference<List<Passport>>() {

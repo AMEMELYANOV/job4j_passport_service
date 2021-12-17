@@ -1,10 +1,11 @@
-package ru.job4j.passport.client.controller;
+package ru.job4j.restservice.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.passport.client.service.PassportProvider;
+import ru.job4j.restservice.service.PassportProvider;
 import ru.job4j.passport.domain.Passport;
+import ru.job4j.restservice.service.RestPassportProvider;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class PassportAPIClient {
     private final PassportProvider passportProvider;
 
-    public PassportAPIClient(PassportProvider passportProvider) {
+    public PassportAPIClient(RestPassportProvider passportProvider) {
         this.passportProvider = passportProvider;
     }
 
@@ -53,7 +54,7 @@ public class PassportAPIClient {
 
     @GetMapping("/unavailable")
     public ResponseEntity<List<Passport>> findUnavaliabe() {
-        List<Passport> passports = passportProvider.findUnavaliabe();
+        List<Passport> passports = passportProvider.findUnavailable();
         return new ResponseEntity<>(passports,
                 passports != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
